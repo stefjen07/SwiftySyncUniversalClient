@@ -1,6 +1,10 @@
-[submodule "vcpkg"]
-	path = vcpkg
-	url = https://github.com/microsoft/vcpkg.git
 [submodule "CodablePP"]
 	path = CodablePP
 	url = https://github.com/stefjen07/CodablePP.git
+	branch = main
+[submodule "vcpkg"]
+	path = vcpkg
+	url = https://github.com/microsoft/vcpkg.git
+[submodule "websocketpp"]
+	path = websocketpp
+	url = https://github.com/zaphoyd/websocketpp.git

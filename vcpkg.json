@@ -3,7 +3,7 @@
   "version-string": "1.0.0",
   "description": "",
   "dependencies": [
-    "uwebsockets",
-    "openssl"
+    "boost-random",
+    "boost-asio"
   ]
 }
