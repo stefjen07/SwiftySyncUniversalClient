@@ -1,3 +1,4 @@
 /.vs
 /vcpkg_installed
 /Debug
+/x64
