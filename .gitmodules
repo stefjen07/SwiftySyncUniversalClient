@@ -1,10 +1,14 @@
-[submodule "CodablePP"]
-	path = CodablePP
-	url = https://github.com/stefjen07/CodablePP.git
-	branch = main
 [submodule "vcpkg"]
 	path = vcpkg
 	url = https://github.com/microsoft/vcpkg.git
 [submodule "websocketpp"]
 	path = websocketpp
 	url = https://github.com/zaphoyd/websocketpp.git
+[submodule "SwiftySyncStorage"]
+	path = SwiftySyncStorage
+	url = https://github.com/stefjen07/SwiftySyncStorage.git
+	branch = main
+[submodule "SwiftySyncAuthorization"]
+	path = SwiftySyncAuthorization
+	url = https://github.com/stefjen07/SwiftySyncAuthorization.git
+	branch = main
