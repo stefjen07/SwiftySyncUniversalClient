@@ -11,6 +11,7 @@
 #include <SwiftySyncStorage.h>
 #include <Codable.h>
 #include <JSON.h>
+#include <Request.h>
 #include <functional>
 #include <vector>
 #include <iostream>
@@ -34,6 +35,51 @@ public:
 	string uri;
 	function<void(AuthorizationStatus)> authHandler;
 
+	bool authorized = false;
+
+	bool send(string content) {
+		websocketpp::lib::error_code ec;
+
+		c.send(con->get_handle(), content.c_str(), websocketpp::frame::opcode::text, ec);
+		if (ec) {
+			cout << "Unable to send message: " << ec.message() << "\n";
+			return false;
+		}
+		return true;
+	}
+
+	Field get_field(string collectionName, string documentName, vector<string> path) {
+		string request = REQUEST_PREFIX;
+		request += DATA_REQUEST_PREFIX;
+		request += FIELD_GET_PREFIX;
+		exit(1); // Not implemented yet
+		send(request);
+	}
+
+	void set_field(Field field, string collectionName, string documentName, vector<string> path) {
+		string request = REQUEST_PREFIX;
+		request += DATA_REQUEST_PREFIX;
+		request += FIELD_SET_PREFIX;
+		exit(1); // Not implemented yet
+		send(request);
+	}
+
+	Document get_document(string collectionName, string documentName) {
+		string request = REQUEST_PREFIX;
+		request += DATA_REQUEST_PREFIX;
+		request += DOCUMENT_GET_PREFIX;
+		exit(1); // Not implemented yet
+		send(request);
+	}
+
+	void set_document(Document document) {
+		string request = REQUEST_PREFIX;
+		request += DATA_REQUEST_PREFIX;
+		request += DOCUMENT_SET_PREFIX;
+		exit(1); // Not implemented yet
+		send(request);
+	}
+
 	void on_message(websocketpp::connection_hdl hdl, message_ptr msg) {
 		string respond = msg->get_payload();
 
@@ -46,23 +92,23 @@ public:
 		string request = AUTH_PREFIX;
 		auto provider = supportedProviders[providerIndex];
 		request += provider->generateRequest(credentials);
-		websocketpp::lib::error_code ec;
-		c.send(con->get_handle(), &request, request.length(), websocketpp::frame::opcode::text, ec);
-		if (ec) {
-			cout << ec.message();
-		}
+		send(request);
 	}
 
 	void handleAuthRespond(string body) {
 		AuthorizationStatus status;
 		if (body == AUTHORIZED_LOCALIZE) {
 			status = AuthorizationStatus::authorized;
+			authorized = true;
 		}
-		else if (body == CORR_CRED_LOCALIZE) {
-			status = AuthorizationStatus::corruptedCredentials;
-		}
-		else if (body == AUTH_ERR_LOCALIZE) {
-			status = AuthorizationStatus::error;
+		else {
+			authorized = false;
+			if (body == CORR_CRED_LOCALIZE) {
+				status = AuthorizationStatus::corruptedCredentials;
+			}
+			else if (body == AUTH_ERR_LOCALIZE) {
+				status = AuthorizationStatus::error;
+			}
 		}
 		authHandler(status);
 	}

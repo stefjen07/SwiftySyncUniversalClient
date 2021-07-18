@@ -5,6 +5,15 @@
 
 using namespace std;
 
+class DebugProvider : public AuthorizationProvider {
+public:
+	string generateRequest(string body) {
+		return "DEBUG";
+	}
+
+	DebugProvider() {}
+};
+
 int main() {
 	SwiftyUniversalClient client("ws://localhost:8888");
 	
@@ -13,10 +22,14 @@ int main() {
 	
 	auto googleProvider = GoogleProvider();
 	auto castedGoogleProvider = dynamic_cast<AuthorizationProvider*>(&googleProvider);
+
+	auto debugProvider = DebugProvider();
+	auto castedDebugProvider = dynamic_cast<AuthorizationProvider*>(&debugProvider);
 	
 	client.supportedProviders = {
 		castedFacebookProvider,
-		castedGoogleProvider
+		castedGoogleProvider,
+		castedDebugProvider
 	};
 
 	client.authHandler = [](AuthorizationStatus status) {
@@ -27,7 +40,10 @@ int main() {
 
 	client.run();
 
-	client.authorize(0, "");
+	while (!client.authorized) {
+		client.authorize(2, "");
+		Sleep(10000);
+	}
 
 	while (true);
 	return 0;
