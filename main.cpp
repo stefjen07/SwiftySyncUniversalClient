@@ -52,10 +52,23 @@ int main() {
 
 	auto testField = Field(FieldType::number, "age");
 	testField.numValue = 17;
-
 	doc.fields.push_back(testField);
 
-	client.set_document(doc);
+	testField = Field(FieldType::boolean, "married");
+	testField.numValue = false;
+	doc.fields.push_back(testField);
+
+	if (client.set_document(doc)) {
+		cout << "Document setting finished successfully";
+	}
+	else {
+		cout << "Error while setting document";
+	}
+	cout << "\n";
+
+	auto receivedDoc = client.get_document("users", "stefjen07");
+
+	cout << receivedDoc[0].numValue << "\n";
 
 	while (true);
 	return 0;

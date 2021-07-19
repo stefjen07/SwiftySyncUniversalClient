@@ -12,9 +12,13 @@
 #include <Codable.h>
 #include <JSON.h>
 #include <Request.h>
+#include <Helper.h>
 #include <functional>
 #include <vector>
+#include <map>
 #include <iostream>
+
+#define RESPOND_WAIT_INTERVAL 200
 
 typedef websocketpp::client<websocketpp::config::asio_client> client;
 
@@ -35,6 +39,8 @@ public:
 	string uri;
 	function<void(AuthorizationStatus)> authHandler;
 
+	map<string, string> responds;
+
 	bool authorized = false;
 
 	bool send(string content) {
@@ -48,9 +54,19 @@ public:
 		return true;
 	}
 
+	string sendRequest(string id, string request) {
+		send(request);
+		cout << "Request with id " << id << " sent\n";
+		while (responds.find(id) == responds.end()) {
+			Sleep(RESPOND_WAIT_INTERVAL);
+		}
+		string result = responds[id];
+		responds.erase(id);
+		return result;
+	}
+
 	Field get_field(string collectionName, string documentName, vector<string> path) {
 		string request = REQUEST_PREFIX;
-		request += DATA_REQUEST_PREFIX;
 		request += FIELD_GET_PREFIX;
 		JSONEncoder encoder;
 		auto fieldContainer = encoder.container();
@@ -61,11 +77,15 @@ public:
 		auto dataContainer = encoder.container();
 		dataContainer.encode(dataRequest);
 		request += dataContainer.content;
-		send(request);
-		exit(1); //Unimplemented
+		string respond = sendRequest(dataRequest.id, request);
+		unsigned prefixSize = strlen(REQUEST_PREFIX) + strlen(DATA_REQUEST_PREFIX) + UUID_SIZE;
+		string encoded = respond.substr(prefixSize, respond.length() - prefixSize);
+		JSONDecoder decoder;
+		auto container = decoder.container(encoded);
+		return container.decode(Field());
 	}
 
-	void set_field(string collectionName, string documentName, vector<string> path, string value) {
+	bool set_field(string collectionName, string documentName, vector<string> path, string value) {
 		string request = REQUEST_PREFIX;
 		request += FIELD_SET_PREFIX;
 		JSONEncoder encoder;
@@ -77,10 +97,11 @@ public:
 		auto dataContainer = encoder.container();
 		dataContainer.encode(dataRequest);
 		request += dataContainer.content;
-		send(request);
+		string respond = sendRequest(dataRequest.id, request);
+		return respond.find(string(REQUEST_PREFIX) + string(DATA_REQUEST_FAILURE)) != 0;
 	}
 
-	Document get_document(string collectionName, string documentName) {
+	vector<Field> get_document(string collectionName, string documentName) {
 		string request = REQUEST_PREFIX;
 		request += DOCUMENT_GET_PREFIX;
 		auto dataRequest = DataRequest(collectionName, documentName, "");
@@ -89,11 +110,16 @@ public:
 		auto container = encoder.container();
 		container.encode(dataRequest);
 		request += container.content;
-		send(request);
-		exit(1); //Unimplemented
+		string respond = sendRequest(dataRequest.id, request);
+		unsigned prefixSize = strlen(REQUEST_PREFIX) + strlen(DATA_REQUEST_PREFIX) + UUID_SIZE;
+		string encoded = respond.substr(prefixSize, respond.length() - prefixSize);
+		JSONDecoder decoder;
+		auto decodeContainer = decoder.container(encoded);
+		auto result = Document();
+		return decodeContainer.decode(vector<Field>());
 	}
 
-	void set_document(Document document) {
+	bool set_document(Document document) {
 		string request = REQUEST_PREFIX;
 		request += DOCUMENT_SET_PREFIX;
 		JSONEncoder encoder;
@@ -104,7 +130,8 @@ public:
 		auto requestContainer = encoder.container();
 		requestContainer.encode(dataRequest);
 		request += requestContainer.content;
-		send(request);
+		string respond = sendRequest(dataRequest.id, request);
+		return respond.find(string(REQUEST_PREFIX) + string(DATA_REQUEST_FAILURE)) != 0;
 	}
 
 	void on_message(websocketpp::connection_hdl hdl, message_ptr msg) {
@@ -112,6 +139,15 @@ public:
 
 		if (respond.find(AUTH_PREFIX) == 0) {
 			handleAuthRespond(respond.substr(strlen(AUTH_PREFIX), respond.length() - strlen(AUTH_PREFIX)));
+		}
+
+		if (respond.find(REQUEST_PREFIX) == 0) {
+			if (respond.find(DATA_REQUEST_PREFIX) == strlen(REQUEST_PREFIX)) {
+				unsigned prefixSize = strlen(REQUEST_PREFIX) + strlen(DATA_REQUEST_PREFIX);
+				string id = respond.substr(prefixSize, UUID_SIZE);
+				cout << "Received response for data request with id " << id << "\n";
+				responds[id] = respond;
+			}
 		}
 	}
 
