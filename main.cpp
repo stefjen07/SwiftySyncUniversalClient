@@ -42,8 +42,20 @@ int main() {
 
 	while (!client.authorized) {
 		client.authorize(2, "");
-		Sleep(10000);
+		Sleep(5000);
 	}
+
+	Collection usersCollection("users");
+	Document doc;
+	doc.collection = &usersCollection;
+	doc.name = "stefjen07";
+
+	auto testField = Field(FieldType::number, "age");
+	testField.numValue = 17;
+
+	doc.fields.push_back(testField);
+
+	client.set_document(doc);
 
 	while (true);
 	return 0;

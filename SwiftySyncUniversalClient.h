@@ -52,31 +52,58 @@ public:
 		string request = REQUEST_PREFIX;
 		request += DATA_REQUEST_PREFIX;
 		request += FIELD_GET_PREFIX;
-		exit(1); // Not implemented yet
+		JSONEncoder encoder;
+		auto fieldContainer = encoder.container();
+		auto fieldRequest = FieldRequest("", path);
+		fieldContainer.encode(fieldRequest);
+		auto dataRequest = DataRequest(collectionName, documentName, fieldContainer.content);
+		dataRequest.type = RequestType::fieldGet;
+		auto dataContainer = encoder.container();
+		dataContainer.encode(dataRequest);
+		request += dataContainer.content;
 		send(request);
+		exit(1); //Unimplemented
 	}
 
-	void set_field(Field field, string collectionName, string documentName, vector<string> path) {
+	void set_field(string collectionName, string documentName, vector<string> path, string value) {
 		string request = REQUEST_PREFIX;
-		request += DATA_REQUEST_PREFIX;
 		request += FIELD_SET_PREFIX;
-		exit(1); // Not implemented yet
+		JSONEncoder encoder;
+		auto fieldContainer = encoder.container();
+		auto fieldRequest = FieldRequest(value, path);
+		fieldContainer.encode(fieldRequest);
+		auto dataRequest = DataRequest(collectionName, documentName, fieldContainer.content);
+		dataRequest.type = RequestType::fieldSet;
+		auto dataContainer = encoder.container();
+		dataContainer.encode(dataRequest);
+		request += dataContainer.content;
 		send(request);
 	}
 
 	Document get_document(string collectionName, string documentName) {
 		string request = REQUEST_PREFIX;
-		request += DATA_REQUEST_PREFIX;
 		request += DOCUMENT_GET_PREFIX;
-		exit(1); // Not implemented yet
+		auto dataRequest = DataRequest(collectionName, documentName, "");
+		dataRequest.type = RequestType::documentGet;
+		JSONEncoder encoder;
+		auto container = encoder.container();
+		container.encode(dataRequest);
+		request += container.content;
 		send(request);
+		exit(1); //Unimplemented
 	}
 
 	void set_document(Document document) {
 		string request = REQUEST_PREFIX;
-		request += DATA_REQUEST_PREFIX;
 		request += DOCUMENT_SET_PREFIX;
-		exit(1); // Not implemented yet
+		JSONEncoder encoder;
+		auto container = encoder.container();
+		container.encode(document.fields);
+		auto dataRequest = DataRequest(document.collection->name, document.name, container.content);
+		dataRequest.type = RequestType::documentSet;
+		auto requestContainer = encoder.container();
+		requestContainer.encode(dataRequest);
+		request += requestContainer.content;
 		send(request);
 	}
 
