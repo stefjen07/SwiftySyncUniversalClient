@@ -1,7 +1,13 @@
 #ifndef SWIFTY_SYNC_UNIVERSAL_CLIENT
 #define SWIFTY_SYNC_UNIVERSAL_CLIENT
 
+#include <Usage.h>
+
+#ifdef SSL_CLIENT
+#include <websocketpp/config/asio_client.hpp>
+#else
 #include <websocketpp/config/asio_no_tls_client.hpp>
+#endif
 #include <websocketpp/client.hpp>
 
 #include <websocketpp/common/thread.hpp>
