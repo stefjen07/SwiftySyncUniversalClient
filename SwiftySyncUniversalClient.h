@@ -140,6 +140,22 @@ public:
 		return respond.find(string(REQUEST_PREFIX) + string(DATA_REQUEST_FAILURE)) != 0;
 	}
 
+	DataUnit call_function(string name, DataUnit input) {
+		string request = REQUEST_PREFIX;
+		request += FUNCTION_REQUEST_PREFIX;
+		JSONEncoder encoder;
+		auto container = encoder.container();
+		auto functionRequest = FunctionRequest(name, input);
+		container.encode(functionRequest);
+		request += container.content;
+		unsigned prefixSize = strlen(REQUEST_PREFIX) + strlen(FUNCTION_REQUEST_PREFIX) + UUID_SIZE;
+		string respond = sendRequest(functionRequest.id, request);
+		respond = respond.substr(prefixSize, respond.length() - prefixSize);
+		JSONDecoder decoder;
+		auto decodeContainer = decoder.container(respond);
+		return decodeContainer.decode(DataUnit());
+	}
+
 	void on_message(websocketpp::connection_hdl hdl, message_ptr msg) {
 		string respond = msg->get_payload();
 
@@ -152,6 +168,12 @@ public:
 				unsigned prefixSize = strlen(REQUEST_PREFIX) + strlen(DATA_REQUEST_PREFIX);
 				string id = respond.substr(prefixSize, UUID_SIZE);
 				cout << "Received response for data request with id " << id << "\n";
+				responds[id] = respond;
+			}
+			if (respond.find(FUNCTION_REQUEST_PREFIX) == strlen(REQUEST_PREFIX)) {
+				unsigned prefixSize = strlen(REQUEST_PREFIX) + strlen(FUNCTION_REQUEST_PREFIX);
+				string id = respond.substr(prefixSize, UUID_SIZE);
+				cout << "Received response for function request with id " << id << "\n";
 				responds[id] = respond;
 			}
 		}

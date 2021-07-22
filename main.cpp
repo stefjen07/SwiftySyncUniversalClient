@@ -70,6 +70,8 @@ int main() {
 
 	cout << receivedDoc[0].numValue << "\n";
 
+	cout << client.call_function("nothing", DataUnit({ 'c' })).bytes[0] << "\n";
+
 	while (true);
 	return 0;
 }
