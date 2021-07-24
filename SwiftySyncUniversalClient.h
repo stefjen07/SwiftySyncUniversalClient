@@ -18,7 +18,7 @@
 #include <Codable.h>
 #include <JSON.h>
 #include <Request.h>
-#include <Helper.h>
+#include <UUID.h>
 #include <functional>
 #include <vector>
 #include <map>
@@ -64,7 +64,7 @@ public:
 		send(request);
 		cout << "Request with id " << id << " sent\n";
 		while (responds.find(id) == responds.end()) {
-			Sleep(RESPOND_WAIT_INTERVAL);
+            sleep(RESPOND_WAIT_INTERVAL);
 		}
 		string result = responds[id];
 		responds.erase(id);

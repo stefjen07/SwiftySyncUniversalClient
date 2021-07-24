@@ -1,7 +1,8 @@
-#include <GoogleAuthorization.h>
-#include <FacebookAuthorization.h>
-#include <Authorization.h>
-#include <SwiftySyncUniversalClient.h>
+#define CLIENT
+#include "GoogleAuthorization.h"
+#include "FacebookAuthorization.h"
+#include "Authorization.h"
+#include "SwiftySyncUniversalClient.h"
 
 using namespace std;
 
@@ -42,7 +43,7 @@ int main() {
 
 	while (!client.authorized) {
 		client.authorize(2, "");
-		Sleep(5000);
+        sleep(5000);
 	}
 
 	Collection usersCollection("users");
