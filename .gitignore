@@ -3,3 +3,5 @@
 /Debug
 /x64
 SwiftySyncCommon/.DS_Store
+.DS_Store
+*.xcuserstate
