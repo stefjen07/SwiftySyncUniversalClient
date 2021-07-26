@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.19)
+project(SwiftySyncUniversalClient)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_subdirectory(SwiftySyncAuthorization)
+add_subdirectory(SwiftySyncCommon)
+add_subdirectory(SwiftySyncStorage)
+include_directories(/)
+include_directories(vcpkg_installed/x86-windows/include)
+include_directories(websocketpp)
+include_directories(SwiftySyncAuthorization)
+include_directories(SwiftySyncCommon)
+include_directories(SwiftySyncStorage)
+include_directories(SwiftySyncCommon/CodablePP)
+
+add_library(SwiftySyncUniversalClient SwiftySyncUniversalClient.cpp SwiftySyncUniversalClient.h)
