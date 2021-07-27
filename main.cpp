@@ -43,7 +43,11 @@ int main() {
 
 	while (!client.authorized) {
 		client.authorize(2, "");
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+		Sleep(5000);
+#else
         sleep(5000);
+#endif
 	}
 
 	Collection usersCollection("users");
