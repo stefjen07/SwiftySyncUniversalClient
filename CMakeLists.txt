@@ -3,6 +3,8 @@ project(SwiftySyncUniversalClient)
 
 set(CMAKE_CXX_STANDARD 14)
 
+add_compile_definitions(CLIENT)
+
 add_subdirectory(SwiftySyncAuthorization)
 add_subdirectory(SwiftySyncCommon)
 add_subdirectory(SwiftySyncStorage)
@@ -32,13 +34,15 @@ FetchContent_MakeAvailable(cmodule)
 
 find_package(Scapix REQUIRED)
 
+if (DEFINED SCAPIX_BRIDGE)
 project(universal_scapix)
 
 set(UNIVERSAL_CLIENT_HEADER SwiftySyncUniversalClient.h)
 scapix_add_target(universal_scapix "com.stefjen07.swiftysyncuniversalclient" "${UNIVERSAL_CLIENT_HEADER}")
 target_sources(universal_scapix PRIVATE SwiftySyncUniversalClient.cpp)
 target_include_directories(universal_scapix PUBLIC /)
-target_link_libraries(universal_scapix SwiftySyncUniversalClient)
+target_link_libraries(universal_scapix PRIVATE SwiftySyncAuthorization SwiftySyncCommon SwiftySyncStorage ${Boost_LIBRARIES})
+endif()
 
 add_executable(test_client main.cpp)
 target_link_libraries(test_client LINK_PUBLIC SwiftySyncUniversalClient ${Boost_LIBRARIES})

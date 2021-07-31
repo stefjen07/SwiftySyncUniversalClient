@@ -6,3 +6,5 @@ SwiftySyncCommon/.DS_Store
 .DS_Store
 *.xcuserstate
 /cmake-build-debug
+/build
+/generated
