@@ -6,9 +6,12 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+    void addGoogleProvider();
+    void addFacebookProvider();
     void createClient(const char *uri);
+    void runClient();
     void authorize(unsigned provider, const char *credentials);
+    bool authorized();
     const char* get_field(const char* collectionName, const char* documentName, const char* path);
     bool set_field(const char* collectionName, const char* documentName, const char* path, const char* value);
     const char* get_document(const char* collectionName, const char* documentName);

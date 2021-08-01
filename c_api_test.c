@@ -1,10 +1,18 @@
 #include "c_api_connector.h"
 #include <stdio.h>
+#include <unistd.h>
 
 int main() {
-    printf("Client started\n");
+    printf("Client starting...\n");
     createClient("ws://localhost:8888");
-    call_function("empty", "nothing");
+    runClient();
+    printf("Client started\n");
+    while(!authorized()) {
+        authorize(2, "");
+        sleep(5);
+    }
+    printf("Authorized\n");
+    call_function("nothing", "nothing");
     set_document("users", "stefjen07", "owner");
     return 0;
 }
