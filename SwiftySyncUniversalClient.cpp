@@ -50,12 +50,14 @@ Field SwiftyUniversalClient::get_field(string collectionName, string documentNam
     return container.decode(Field());
 }
 
-bool SwiftyUniversalClient::set_field(string collectionName, string documentName, vector<string> path, string value) {
+bool SwiftyUniversalClient::set_field(string collectionName, string documentName, vector<string> path, Field value) {
     string request = REQUEST_PREFIX;
     request += FIELD_SET_PREFIX;
     JSONEncoder encoder;
     auto fieldContainer = encoder.container();
-    auto fieldRequest = FieldRequest(value, path);
+    auto valueContainer = encoder.container();
+    valueContainer.encode(value);
+    auto fieldRequest = FieldRequest(valueContainer.content, path);
     fieldContainer.encode(fieldRequest);
     auto dataRequest = DataRequest(collectionName, documentName, fieldContainer.content);
     dataRequest.type = RequestType::fieldSet;

@@ -20,7 +20,7 @@ extern "C" {
     void authorize(unsigned provider, const char *credentials);
     bool authorized();
     struct CField* get_field(const char* collectionName, const char* documentName, const char* path);
-    bool set_field(const char* collectionName, const char* documentName, const char* path, const char* value);
+    bool set_field(const char* collectionName, const char* documentName, const char* path, struct CField* value);
     struct CFieldArray get_document(const char* collectionName, const char* documentName);
     bool set_document(const char* collectionName, const char* documentName, struct CFieldArray fields);
     const char* call_function(const char* name, const char* bytes);

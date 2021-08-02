@@ -9,7 +9,7 @@
 #include "JSON.h"
 #include "Data.h"
 #include <string>
-#include <malloc.h>
+#include <stdlib.h>
 
 class DebugProvider : public AuthorizationProvider {
 public:
@@ -88,7 +88,7 @@ extern "C" {
         return CField_fromField(&field);
     }
 
-    bool set_field(const char* collectionName, const char* documentName, const char* path, const char* value) {
+    bool set_field(const char* collectionName, const char* documentName, const char* path, CField* value) {
         if (client_instance == NULL) {
             exit(-1);
         }
@@ -96,7 +96,7 @@ extern "C" {
         auto container = decoder.container(path);
         auto decodedPath = container.decode(vector<string>());
         auto field = client_instance->get_field(collectionName, documentName, decodedPath);
-        return client_instance->set_field(collectionName, documentName, decodedPath, value);
+        return client_instance->set_field(collectionName, documentName, decodedPath, *Field_fromCField(value));
     }
 
     CFieldArray get_document(const char* collectionName, const char* documentName) {

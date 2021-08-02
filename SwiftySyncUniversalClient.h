@@ -52,15 +52,11 @@ public:
 	bool authorized = false;
 
 	bool send(string content);
-
 	string sendRequest(string id, string request);
 
 	Field get_field(string collectionName, string documentName, vector<string> path);
-
-	bool set_field(string collectionName, string documentName, vector<string> path, string value);
-
+	bool set_field(string collectionName, string documentName, vector<string> path, Field value);
 	vector<Field> get_document(string collectionName, string documentName);
-
 	bool set_document(Document document);
 
 	DataUnit call_function(string name, DataUnit input);

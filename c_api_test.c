@@ -1,6 +1,7 @@
 #include "c_api_connector.h"
 #include "c_api_storage.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 #ifdef _WIN32
 #include <Windows.h>
