@@ -6,8 +6,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    void addGoogleProvider();
-    void addFacebookProvider();
     void createClient(const char *uri);
     void runClient();
     void authorize(unsigned provider, const char *credentials);
