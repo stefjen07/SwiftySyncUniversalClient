@@ -24,7 +24,9 @@
 #include <map>
 #include <iostream>
 
+#ifndef RESPOND_WAIT_INTERVAL
 #define RESPOND_WAIT_INTERVAL 200
+#endif
 
 typedef websocketpp::client<websocketpp::config::asio_client> client;
 

@@ -12,7 +12,7 @@ int main() {
         sleep(5);
     }
     printf("Authorized\n");
-    call_function("nothing", "nothing");
+    printf("Function returned %s\n", call_function("nothing", "nothing"));
     set_document("users", "stefjen07", "owner");
     return 0;
 }

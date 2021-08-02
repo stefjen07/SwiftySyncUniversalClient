@@ -76,7 +76,8 @@ extern "C" {
         JSONEncoder encoder;
         auto encodeContainer = encoder.container();
         encodeContainer.encode(field);
-        return encodeContainer.content.c_str();
+        static string result = encodeContainer.content;
+        return result.c_str();
     }
 
     bool set_field(const char* collectionName, const char* documentName, const char* path, const char* value) {
@@ -98,7 +99,8 @@ extern "C" {
         JSONEncoder encoder;
         auto container = encoder.container();
         container.encode(document);
-        return container.content.c_str();
+        static string result = container.content;
+        return result.c_str();
     }
 
     bool set_document(const char* collectionName, const char* documentName, const char* content) {
@@ -120,7 +122,7 @@ extern "C" {
         }
         auto input = DataUnit(vBytes);
         auto unit = client_instance->call_function(name, input);
-        string sUnit;
+        static string sUnit;
         for(int i=0;i<unit.bytes.size();i++) {
             sUnit += unit.bytes[i];
         }

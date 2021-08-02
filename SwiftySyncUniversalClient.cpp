@@ -22,7 +22,7 @@ string SwiftyUniversalClient::sendRequest(string id, string request) {
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
         Sleep(RESPOND_WAIT_INTERVAL);
 #else
-        sleep(RESPOND_WAIT_INTERVAL);
+        usleep(RESPOND_WAIT_INTERVAL);
 #endif
     }
     string result = responds[id];
