@@ -26,7 +26,7 @@ add_library(SwiftySyncUniversalClient SwiftySyncUniversalClient.cpp SwiftySyncUn
 target_link_libraries(SwiftySyncUniversalClient SwiftySyncAuthorization SwiftySyncCommon SwiftySyncStorage ${Boost_LIBRARIES})
 
 add_library(c_api_connector c_api_connector.cpp c_api_connector.h)
-target_link_libraries(c_api_connector SwiftySyncUniversalClient)
+target_link_libraries(c_api_connector SwiftySyncUniversalClient c_api_storage)
 
 add_executable(test_client main.cpp)
 target_link_libraries(test_client LINK_PUBLIC SwiftySyncUniversalClient ${Boost_LIBRARIES})
