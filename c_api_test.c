@@ -1,6 +1,11 @@
 #include "c_api_connector.h"
 #include <stdio.h>
+
+#ifdef _WIN32
+#include <Windows.h>
+#else
 #include <unistd.h>
+#endif
 
 int main() {
     printf("Client starting...\n");
@@ -9,7 +14,11 @@ int main() {
     printf("Client started\n");
     while(!authorized()) {
         authorize(2, "");
-        sleep(5);
+#ifdef _WIN32
+        Sleep(5000);
+#else
+        usleep(5000);
+#endif
     }
     printf("Authorized\n");
     printf("Function returned %s\n", call_function("nothing", "nothing"));
