@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_compile_definitions(CLIENT)
 add_compile_definitions(_WEBSOCKETPP_CPP11_RANDOM_DEVICE_)
+add_compile_definitions(ASIO_STANDALONE)
+add_compile_definitions(_WEBSOCKETPP_CPP11_TYPE_TRAITS_)
 
 add_subdirectory(SwiftySyncAuthorization)
 add_subdirectory(SwiftySyncCommon)
@@ -20,8 +22,11 @@ include_directories(SwiftySyncAuthorization/cpp-httplib)
 include_directories(websocketpp)
 include_directories(SwiftySyncCommon/CodablePP)
 
-find_package(Boost)
-include_directories(${Boost_INCLUDE_DIR})
+include_directories(asio2)
+include_directories(asio2/asio)
+
+find_package(OpenSSL)
+include_directories(${OPENSSL_INCLUDE_DIR})
 
 add_library(SwiftySyncUniversalClient SwiftySyncUniversalClient.cpp SwiftySyncUniversalClient.h)
 target_link_libraries(SwiftySyncUniversalClient SwiftySyncAuthorization SwiftySyncCommon SwiftySyncStorage)

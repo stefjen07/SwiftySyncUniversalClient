@@ -16,3 +16,6 @@
 	path = SwiftySyncCommon
 	url = https://github.com/stefjen07/SwiftySyncCommon
 	branch = main
+[submodule "asio2"]
+	path = asio2
+	url = https://github.com/stefjen07/asio2.git
