@@ -68,6 +68,26 @@ extern "C" {
         return client_instance->authorized;
     }
 
+    CFieldArray* CFieldArray_new(size_t size) {
+        CField* arr = (CField*) malloc(sizeof(CField) * size);
+        CFieldArray* result = (CFieldArray*) malloc(sizeof(CFieldArray));
+        result->ptr = arr;
+        result->size = size;
+        return result;
+    }
+
+    size_t CField_size() {
+        return sizeof(CField);
+    }
+
+    char* allocate_string(char* ptr, size_t size) {
+        size_t bytes = sizeof(char) * (size + 1);
+        char* result = (char*) malloc(bytes);
+        memcpy(result, ptr, bytes);
+        result[size] = '\0';
+        return result;
+    }
+
     CField *get_array_child(struct CFieldArray array, const char *key) {
         for(int i=0;i<array.size;i++) {
             if(strcmp(array.ptr[i].name,key) == 0) {

@@ -13,6 +13,10 @@ extern "C" {
         size_t size;
     };
 
+    struct CFieldArray* CFieldArray_new(size_t size);
+    size_t CField_size();
+    char* allocate_string(char* ptr, size_t size);
+
     struct CField* get_array_child(struct CFieldArray array, const char* key);
 
     void create_client(const char *uri);
