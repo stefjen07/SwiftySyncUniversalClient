@@ -1,13 +1,13 @@
-#include "c_api_storage_helper.h"
+#include "c_api_storage_helper.hpp"
 #include "c_api_storage.h"
 #include "c_api_connector.h"
-#include "Authorization.h"
-#include "FacebookAuthorization.h"
-#include "GoogleAuthorization.h"
-#include "SwiftySyncUniversalClient.h"
-#include "Codable.h"
-#include "JSON.h"
-#include "Data.h"
+#include "Authorization.hpp"
+#include "FacebookAuthorization.hpp"
+#include "GoogleAuthorization.hpp"
+#include "SwiftySyncUniversalClient.hpp"
+#include "Codable.hpp"
+#include "JSON.hpp"
+#include "Data.hpp"
 #include <string>
 #include <stdlib.h>
 

@@ -8,3 +8,4 @@ SwiftySyncCommon/.DS_Store
 /cmake-build-debug
 /build
 /generated
+/ios_build

@@ -3,7 +3,7 @@
 
 #define _WEBSOCKETPP_CPP11_RANDOM_DEVICE_
 
-#include <Usage.h>
+#include "Usage.h"
 
 #ifdef SSL_CLIENT
 #include <websocketpp/config/asio_client.hpp>
@@ -15,12 +15,12 @@
 #include <websocketpp/common/thread.hpp>
 #include <websocketpp/common/memory.hpp>
 
-#include <Authorization.h>
-#include <SwiftySyncStorage.h>
-#include <Codable.h>
-#include <JSON.h>
-#include <Request.h>
-#include <UUID.h>
+#include <Authorization.hpp>
+#include <SwiftySyncStorage.hpp>
+#include <Codable.hpp>
+#include <JSON.hpp>
+#include <Request.hpp>
+#include <UUID.hpp>
 #include <functional>
 #include <vector>
 #include <map>
