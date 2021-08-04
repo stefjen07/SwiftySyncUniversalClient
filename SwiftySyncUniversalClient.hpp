@@ -2,6 +2,8 @@
 #define SWIFTY_SYNC_UNIVERSAL_CLIENT
 
 #define _WEBSOCKETPP_CPP11_RANDOM_DEVICE_
+#define ASIO_STANDALONE
+#define CLIENT
 
 #include "Usage.h"
 

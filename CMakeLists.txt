@@ -88,5 +88,5 @@ endif()
 #add_executable(test_client main.cpp)
 #target_link_libraries(test_client LINK_PUBLIC SwiftySyncUniversalClient)
 
-#add_executable(test_c_api c_api_test.c)
-#target_link_libraries(test_c_api LINK_PUBLIC c_api_connector)
+add_executable(test_c_api c_api_test.c)
+target_link_libraries(test_c_api LINK_PUBLIC c_api_connector)

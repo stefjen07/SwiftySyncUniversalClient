@@ -7,24 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3EEC268F26AC990A0035C489 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EEC268E26AC990A0035C489 /* main.cpp */; };
+		3E14F9C426BB3620009ECD69 /* c_api_connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9C226BB3620009ECD69 /* c_api_connector.cpp */; };
+		3E14F9C926BB364A009ECD69 /* c_api_storage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9C826BB3649009ECD69 /* c_api_storage.cpp */; };
+		3E14F9D526BB38BB009ECD69 /* SwiftySyncNative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9D426BB38BB009ECD69 /* SwiftySyncNative.swift */; };
+		3E14F9D726BB4C30009ECD69 /* SwiftySyncUniversalClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9D626BB4C30009ECD69 /* SwiftySyncUniversalClient.cpp */; };
+		3E14F9D926BB4C4E009ECD69 /* SwiftySyncStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9D826BB4C4E009ECD69 /* SwiftySyncStorage.cpp */; };
+		3E14F9DD26BB4C69009ECD69 /* Request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9DA26BB4C68009ECD69 /* Request.cpp */; };
+		3E14F9DE26BB4C69009ECD69 /* Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9DB26BB4C68009ECD69 /* Data.cpp */; };
+		3E14F9DF26BB4C69009ECD69 /* UUID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9DC26BB4C69009ECD69 /* UUID.cpp */; };
+		3E14F9E226BB4C7F009ECD69 /* GoogleAuthorization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9E026BB4C7F009ECD69 /* GoogleAuthorization.cpp */; };
+		3E14F9E326BB4C7F009ECD69 /* FacebookAuthorization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9E126BB4C7F009ECD69 /* FacebookAuthorization.cpp */; };
+		3E14F9E526BB4C9D009ECD69 /* JSON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9E426BB4C9D009ECD69 /* JSON.cpp */; };
+		3E14F9E726BB4CE3009ECD69 /* c_api_storage_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9E626BB4CE3009ECD69 /* c_api_storage_helper.cpp */; };
 		3EEC26A426AC9AA20035C489 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC269126AC9AA20035C489 /* libcrypto.a */; };
-		3EEC26A526AC9AA20035C489 /* libboost_exception.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC269226AC9AA20035C489 /* libboost_exception.a */; };
-		3EEC26A626AC9AA20035C489 /* libboost_chrono.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC269326AC9AA20035C489 /* libboost_chrono.a */; };
-		3EEC26A726AC9AA20035C489 /* libboost_date_time.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC269426AC9AA20035C489 /* libboost_date_time.a */; };
-		3EEC26A926AC9AA20035C489 /* libboost_math_tr1f.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC269626AC9AA20035C489 /* libboost_math_tr1f.a */; };
-		3EEC26AA26AC9AA20035C489 /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC269726AC9AA20035C489 /* libboost_thread.a */; };
-		3EEC26AC26AC9AA20035C489 /* libboost_math_c99f.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC269926AC9AA20035C489 /* libboost_math_c99f.a */; };
 		3EEC26AD26AC9AA20035C489 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC269A26AC9AA20035C489 /* libssl.a */; };
-		3EEC26AE26AC9AA20035C489 /* libboost_random.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC269B26AC9AA20035C489 /* libboost_random.a */; };
-		3EEC26AF26AC9AA20035C489 /* libboost_math_c99.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC269C26AC9AA20035C489 /* libboost_math_c99.a */; };
-		3EEC26B026AC9AA20035C489 /* libboost_container.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC269D26AC9AA20035C489 /* libboost_container.a */; };
-		3EEC26B126AC9AA20035C489 /* libboost_context.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC269E26AC9AA20035C489 /* libboost_context.a */; };
-		3EEC26B226AC9AA20035C489 /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC269F26AC9AA20035C489 /* libboost_system.a */; };
-		3EEC26B326AC9AA20035C489 /* libboost_atomic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC26A026AC9AA20035C489 /* libboost_atomic.a */; };
-		3EEC26B426AC9AA20035C489 /* libboost_coroutine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC26A126AC9AA20035C489 /* libboost_coroutine.a */; };
-		3EEC26B526AC9AA20035C489 /* libboost_regex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC26A226AC9AA20035C489 /* libboost_regex.a */; };
-		3EEC26BC26AC9F4D0035C489 /* JSON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EEC26BB26AC9F4D0035C489 /* JSON.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,30 +36,37 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3E14F9C126BB3620009ECD69 /* SwiftySyncUniversalClient.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SwiftySyncUniversalClient.hpp; sourceTree = "<group>"; };
+		3E14F9C226BB3620009ECD69 /* c_api_connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = c_api_connector.cpp; sourceTree = "<group>"; };
+		3E14F9C326BB3620009ECD69 /* c_api_connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c_api_connector.h; sourceTree = "<group>"; };
+		3E14F9C526BB3649009ECD69 /* c_api_storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = c_api_storage.h; path = SwiftySyncStorage/c_api_storage.h; sourceTree = "<group>"; };
+		3E14F9C626BB3649009ECD69 /* c_api_storage_helper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = c_api_storage_helper.hpp; path = SwiftySyncStorage/c_api_storage_helper.hpp; sourceTree = "<group>"; };
+		3E14F9C726BB3649009ECD69 /* SwiftySyncStorage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SwiftySyncStorage.hpp; path = SwiftySyncStorage/SwiftySyncStorage.hpp; sourceTree = "<group>"; };
+		3E14F9C826BB3649009ECD69 /* c_api_storage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = c_api_storage.cpp; path = SwiftySyncStorage/c_api_storage.cpp; sourceTree = "<group>"; };
+		3E14F9CA26BB3664009ECD69 /* Authorization.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Authorization.hpp; path = SwiftySyncAuthorization/Authorization.hpp; sourceTree = "<group>"; };
+		3E14F9CB26BB3664009ECD69 /* FacebookAuthorization.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FacebookAuthorization.hpp; path = SwiftySyncAuthorization/FacebookAuthorization.hpp; sourceTree = "<group>"; };
+		3E14F9CC26BB3664009ECD69 /* GoogleAuthorization.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GoogleAuthorization.hpp; path = SwiftySyncAuthorization/GoogleAuthorization.hpp; sourceTree = "<group>"; };
+		3E14F9CD26BB3679009ECD69 /* Functions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Functions.hpp; path = SwiftySyncCommon/Functions.hpp; sourceTree = "<group>"; };
+		3E14F9CE26BB3679009ECD69 /* UUID.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UUID.hpp; path = SwiftySyncCommon/UUID.hpp; sourceTree = "<group>"; };
+		3E14F9CF26BB367A009ECD69 /* Request.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Request.hpp; path = SwiftySyncCommon/Request.hpp; sourceTree = "<group>"; };
+		3E14F9D026BB367A009ECD69 /* Data.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Data.hpp; path = SwiftySyncCommon/Data.hpp; sourceTree = "<group>"; };
+		3E14F9D126BB3695009ECD69 /* Codable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Codable.hpp; path = SwiftySyncCommon/CodablePP/Codable.hpp; sourceTree = "<group>"; };
+		3E14F9D226BB3695009ECD69 /* JSON.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = JSON.hpp; path = SwiftySyncCommon/CodablePP/JSON.hpp; sourceTree = "<group>"; };
+		3E14F9D326BB38BA009ECD69 /* SwiftySyncUniversalClient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftySyncUniversalClient-Bridging-Header.h"; sourceTree = "<group>"; };
+		3E14F9D426BB38BB009ECD69 /* SwiftySyncNative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftySyncNative.swift; sourceTree = "<group>"; };
+		3E14F9D626BB4C30009ECD69 /* SwiftySyncUniversalClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwiftySyncUniversalClient.cpp; sourceTree = "<group>"; };
+		3E14F9D826BB4C4E009ECD69 /* SwiftySyncStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SwiftySyncStorage.cpp; path = SwiftySyncStorage/SwiftySyncStorage.cpp; sourceTree = "<group>"; };
+		3E14F9DA26BB4C68009ECD69 /* Request.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Request.cpp; path = SwiftySyncCommon/Request.cpp; sourceTree = "<group>"; };
+		3E14F9DB26BB4C68009ECD69 /* Data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Data.cpp; path = SwiftySyncCommon/Data.cpp; sourceTree = "<group>"; };
+		3E14F9DC26BB4C69009ECD69 /* UUID.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UUID.cpp; path = SwiftySyncCommon/UUID.cpp; sourceTree = "<group>"; };
+		3E14F9E026BB4C7F009ECD69 /* GoogleAuthorization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GoogleAuthorization.cpp; path = SwiftySyncAuthorization/GoogleAuthorization.cpp; sourceTree = "<group>"; };
+		3E14F9E126BB4C7F009ECD69 /* FacebookAuthorization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FacebookAuthorization.cpp; path = SwiftySyncAuthorization/FacebookAuthorization.cpp; sourceTree = "<group>"; };
+		3E14F9E426BB4C9D009ECD69 /* JSON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JSON.cpp; path = SwiftySyncCommon/CodablePP/JSON.cpp; sourceTree = "<group>"; };
+		3E14F9E626BB4CE3009ECD69 /* c_api_storage_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = c_api_storage_helper.cpp; path = SwiftySyncStorage/c_api_storage_helper.cpp; sourceTree = "<group>"; };
 		3EEC268226AC98BC0035C489 /* SwiftySyncUniversalClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftySyncUniversalClient; sourceTree = BUILT_PRODUCTS_DIR; };
-		3EEC268C26AC990A0035C489 /* SwiftySyncUniversalClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftySyncUniversalClient.h; sourceTree = "<group>"; };
 		3EEC268D26AC990A0035C489 /* Usage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Usage.h; sourceTree = "<group>"; };
-		3EEC268E26AC990A0035C489 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3EEC269126AC9AA20035C489 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "vcpkg_installed/x64-osx/lib/libcrypto.a"; sourceTree = "<group>"; };
-		3EEC269226AC9AA20035C489 /* libboost_exception.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_exception.a; path = "vcpkg_installed/x64-osx/lib/libboost_exception.a"; sourceTree = "<group>"; };
-		3EEC269326AC9AA20035C489 /* libboost_chrono.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_chrono.a; path = "vcpkg_installed/x64-osx/lib/libboost_chrono.a"; sourceTree = "<group>"; };
-		3EEC269426AC9AA20035C489 /* libboost_date_time.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_date_time.a; path = "vcpkg_installed/x64-osx/lib/libboost_date_time.a"; sourceTree = "<group>"; };
-		3EEC269526AC9AA20035C489 /* libboost_math_tr1l.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_math_tr1l.a; path = "vcpkg_installed/x64-osx/lib/libboost_math_tr1l.a"; sourceTree = "<group>"; };
-		3EEC269626AC9AA20035C489 /* libboost_math_tr1f.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_math_tr1f.a; path = "vcpkg_installed/x64-osx/lib/libboost_math_tr1f.a"; sourceTree = "<group>"; };
-		3EEC269726AC9AA20035C489 /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = "vcpkg_installed/x64-osx/lib/libboost_thread.a"; sourceTree = "<group>"; };
-		3EEC269826AC9AA20035C489 /* libboost_math_c99l.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_math_c99l.a; path = "vcpkg_installed/x64-osx/lib/libboost_math_c99l.a"; sourceTree = "<group>"; };
-		3EEC269926AC9AA20035C489 /* libboost_math_c99f.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_math_c99f.a; path = "vcpkg_installed/x64-osx/lib/libboost_math_c99f.a"; sourceTree = "<group>"; };
 		3EEC269A26AC9AA20035C489 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "vcpkg_installed/x64-osx/lib/libssl.a"; sourceTree = "<group>"; };
-		3EEC269B26AC9AA20035C489 /* libboost_random.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_random.a; path = "vcpkg_installed/x64-osx/lib/libboost_random.a"; sourceTree = "<group>"; };
-		3EEC269C26AC9AA20035C489 /* libboost_math_c99.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_math_c99.a; path = "vcpkg_installed/x64-osx/lib/libboost_math_c99.a"; sourceTree = "<group>"; };
-		3EEC269D26AC9AA20035C489 /* libboost_container.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_container.a; path = "vcpkg_installed/x64-osx/lib/libboost_container.a"; sourceTree = "<group>"; };
-		3EEC269E26AC9AA20035C489 /* libboost_context.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_context.a; path = "vcpkg_installed/x64-osx/lib/libboost_context.a"; sourceTree = "<group>"; };
-		3EEC269F26AC9AA20035C489 /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = "vcpkg_installed/x64-osx/lib/libboost_system.a"; sourceTree = "<group>"; };
-		3EEC26A026AC9AA20035C489 /* libboost_atomic.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_atomic.a; path = "vcpkg_installed/x64-osx/lib/libboost_atomic.a"; sourceTree = "<group>"; };
-		3EEC26A126AC9AA20035C489 /* libboost_coroutine.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_coroutine.a; path = "vcpkg_installed/x64-osx/lib/libboost_coroutine.a"; sourceTree = "<group>"; };
-		3EEC26A226AC9AA20035C489 /* libboost_regex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_regex.a; path = "vcpkg_installed/x64-osx/lib/libboost_regex.a"; sourceTree = "<group>"; };
-		3EEC26A326AC9AA20035C489 /* libboost_math_tr1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_math_tr1.a; path = "vcpkg_installed/x64-osx/lib/libboost_math_tr1.a"; sourceTree = "<group>"; };
-		3EEC26BB26AC9F4D0035C489 /* JSON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JSON.cpp; path = SwiftySyncStorage/CodablePP/JSON.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,21 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EEC26A426AC9AA20035C489 /* libcrypto.a in Frameworks */,
-				3EEC26A526AC9AA20035C489 /* libboost_exception.a in Frameworks */,
-				3EEC26A626AC9AA20035C489 /* libboost_chrono.a in Frameworks */,
-				3EEC26A726AC9AA20035C489 /* libboost_date_time.a in Frameworks */,
-				3EEC26A926AC9AA20035C489 /* libboost_math_tr1f.a in Frameworks */,
-				3EEC26AA26AC9AA20035C489 /* libboost_thread.a in Frameworks */,
-				3EEC26AC26AC9AA20035C489 /* libboost_math_c99f.a in Frameworks */,
 				3EEC26AD26AC9AA20035C489 /* libssl.a in Frameworks */,
-				3EEC26AE26AC9AA20035C489 /* libboost_random.a in Frameworks */,
-				3EEC26AF26AC9AA20035C489 /* libboost_math_c99.a in Frameworks */,
-				3EEC26B026AC9AA20035C489 /* libboost_container.a in Frameworks */,
-				3EEC26B126AC9AA20035C489 /* libboost_context.a in Frameworks */,
-				3EEC26B226AC9AA20035C489 /* libboost_system.a in Frameworks */,
-				3EEC26B326AC9AA20035C489 /* libboost_atomic.a in Frameworks */,
-				3EEC26B426AC9AA20035C489 /* libboost_coroutine.a in Frameworks */,
-				3EEC26B526AC9AA20035C489 /* libboost_regex.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,12 +85,36 @@
 		3EEC267926AC98BC0035C489 = {
 			isa = PBXGroup;
 			children = (
-				3EEC26BB26AC9F4D0035C489 /* JSON.cpp */,
-				3EEC268E26AC990A0035C489 /* main.cpp */,
-				3EEC268C26AC990A0035C489 /* SwiftySyncUniversalClient.h */,
+				3E14F9E626BB4CE3009ECD69 /* c_api_storage_helper.cpp */,
+				3E14F9E426BB4C9D009ECD69 /* JSON.cpp */,
+				3E14F9E126BB4C7F009ECD69 /* FacebookAuthorization.cpp */,
+				3E14F9E026BB4C7F009ECD69 /* GoogleAuthorization.cpp */,
+				3E14F9DB26BB4C68009ECD69 /* Data.cpp */,
+				3E14F9DA26BB4C68009ECD69 /* Request.cpp */,
+				3E14F9DC26BB4C69009ECD69 /* UUID.cpp */,
+				3E14F9D826BB4C4E009ECD69 /* SwiftySyncStorage.cpp */,
+				3E14F9D626BB4C30009ECD69 /* SwiftySyncUniversalClient.cpp */,
+				3E14F9D426BB38BB009ECD69 /* SwiftySyncNative.swift */,
+				3E14F9D126BB3695009ECD69 /* Codable.hpp */,
+				3E14F9D226BB3695009ECD69 /* JSON.hpp */,
+				3E14F9D026BB367A009ECD69 /* Data.hpp */,
+				3E14F9CD26BB3679009ECD69 /* Functions.hpp */,
+				3E14F9CF26BB367A009ECD69 /* Request.hpp */,
+				3E14F9CE26BB3679009ECD69 /* UUID.hpp */,
+				3E14F9CA26BB3664009ECD69 /* Authorization.hpp */,
+				3E14F9CB26BB3664009ECD69 /* FacebookAuthorization.hpp */,
+				3E14F9CC26BB3664009ECD69 /* GoogleAuthorization.hpp */,
+				3E14F9C626BB3649009ECD69 /* c_api_storage_helper.hpp */,
+				3E14F9C826BB3649009ECD69 /* c_api_storage.cpp */,
+				3E14F9C526BB3649009ECD69 /* c_api_storage.h */,
+				3E14F9C726BB3649009ECD69 /* SwiftySyncStorage.hpp */,
+				3E14F9C226BB3620009ECD69 /* c_api_connector.cpp */,
+				3E14F9C326BB3620009ECD69 /* c_api_connector.h */,
+				3E14F9C126BB3620009ECD69 /* SwiftySyncUniversalClient.hpp */,
 				3EEC268D26AC990A0035C489 /* Usage.h */,
 				3EEC268326AC98BC0035C489 /* Products */,
 				3EEC269026AC9AA10035C489 /* Frameworks */,
+				3E14F9D326BB38BA009ECD69 /* SwiftySyncUniversalClient-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,23 +129,6 @@
 		3EEC269026AC9AA10035C489 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3EEC26A026AC9AA20035C489 /* libboost_atomic.a */,
-				3EEC269326AC9AA20035C489 /* libboost_chrono.a */,
-				3EEC269D26AC9AA20035C489 /* libboost_container.a */,
-				3EEC269E26AC9AA20035C489 /* libboost_context.a */,
-				3EEC26A126AC9AA20035C489 /* libboost_coroutine.a */,
-				3EEC269426AC9AA20035C489 /* libboost_date_time.a */,
-				3EEC269226AC9AA20035C489 /* libboost_exception.a */,
-				3EEC269C26AC9AA20035C489 /* libboost_math_c99.a */,
-				3EEC269926AC9AA20035C489 /* libboost_math_c99f.a */,
-				3EEC269826AC9AA20035C489 /* libboost_math_c99l.a */,
-				3EEC26A326AC9AA20035C489 /* libboost_math_tr1.a */,
-				3EEC269626AC9AA20035C489 /* libboost_math_tr1f.a */,
-				3EEC269526AC9AA20035C489 /* libboost_math_tr1l.a */,
-				3EEC269B26AC9AA20035C489 /* libboost_random.a */,
-				3EEC26A226AC9AA20035C489 /* libboost_regex.a */,
-				3EEC269F26AC9AA20035C489 /* libboost_system.a */,
-				3EEC269726AC9AA20035C489 /* libboost_thread.a */,
 				3EEC269126AC9AA20035C489 /* libcrypto.a */,
 				3EEC269A26AC9AA20035C489 /* libssl.a */,
 			);
@@ -170,6 +166,7 @@
 				TargetAttributes = {
 					3EEC268126AC98BC0035C489 = {
 						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -196,8 +193,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EEC268F26AC990A0035C489 /* main.cpp in Sources */,
-				3EEC26BC26AC9F4D0035C489 /* JSON.cpp in Sources */,
+				3E14F9E726BB4CE3009ECD69 /* c_api_storage_helper.cpp in Sources */,
+				3E14F9DF26BB4C69009ECD69 /* UUID.cpp in Sources */,
+				3E14F9C926BB364A009ECD69 /* c_api_storage.cpp in Sources */,
+				3E14F9D726BB4C30009ECD69 /* SwiftySyncUniversalClient.cpp in Sources */,
+				3E14F9E526BB4C9D009ECD69 /* JSON.cpp in Sources */,
+				3E14F9DE26BB4C69009ECD69 /* Data.cpp in Sources */,
+				3E14F9C426BB3620009ECD69 /* c_api_connector.cpp in Sources */,
+				3E14F9E326BB4C7F009ECD69 /* FacebookAuthorization.cpp in Sources */,
+				3E14F9DD26BB4C69009ECD69 /* Request.cpp in Sources */,
+				3E14F9D526BB38BB009ECD69 /* SwiftySyncNative.swift in Sources */,
+				3E14F9D926BB4C4E009ECD69 /* SwiftySyncStorage.cpp in Sources */,
+				3E14F9E226BB4C7F009ECD69 /* GoogleAuthorization.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +325,7 @@
 		3EEC268A26AC98BC0035C489 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4TJY8UCM7;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -330,17 +338,26 @@
 					"${SRCROOT}/vcpkg_installed/x64-osx/include/**",
 					"${SRCROOT}/websocketpp",
 				);
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"${SRCROOT}/vcpkg_installed/x64-osx/lib/**",
 					"$(PROJECT_DIR)/vcpkg_installed/x64-osx/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftySyncUniversalClient-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		3EEC268B26AC98BC0035C489 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4TJY8UCM7;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -353,11 +370,18 @@
 					"${SRCROOT}/vcpkg_installed/x64-osx/include/**",
 					"${SRCROOT}/websocketpp",
 				);
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"${SRCROOT}/vcpkg_installed/x64-osx/lib/**",
 					"$(PROJECT_DIR)/vcpkg_installed/x64-osx/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftySyncUniversalClient-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

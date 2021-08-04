@@ -1,8 +1,7 @@
 #define CLIENT
-#include "GoogleAuthorization.h"
-#include "FacebookAuthorization.h"
-#include "Authorization.h"
-#include "SwiftySyncUniversalClient.h"
+#include "GoogleAuthorization.hpp"
+#include "FacebookAuthorization.hpp"
+#include "SwiftySyncUniversalClient.hpp"
 
 using namespace std;
 

@@ -1,19 +1,18 @@
+#define CLIENT
+
 #include "c_api_storage_helper.hpp"
-#include "c_api_storage.h"
 #include "c_api_connector.h"
-#include "Authorization.hpp"
 #include "FacebookAuthorization.hpp"
 #include "GoogleAuthorization.hpp"
 #include "SwiftySyncUniversalClient.hpp"
-#include "Codable.hpp"
 #include "JSON.hpp"
 #include "Data.hpp"
-#include <string>
+#include <iostream>
 #include <stdlib.h>
 
 class DebugProvider : public AuthorizationProvider {
 public:
-    string generateRequest(string body) {
+    std::string generateRequest(std::string body) {
         return "DEBUG";
     }
 
@@ -45,7 +44,7 @@ extern "C" {
 
             client_instance->authHandler = [](AuthorizationStatus status) {
                 if (status == AuthorizationStatus::authorized) {
-                    cout << "Authorized successfully\n";
+                    std::cout << "Authorized successfully\n";
                 }
             };
         }
@@ -103,7 +102,7 @@ extern "C" {
         }
         JSONDecoder decoder;
         auto container = decoder.container(path);
-        auto decodedPath = container.decode(vector<string>());
+        auto decodedPath = container.decode(std::vector<std::string>());
         auto field = client_instance->get_field(collectionName, documentName, decodedPath);
         return CField_fromField(&field);
     }
@@ -114,7 +113,7 @@ extern "C" {
         }
         JSONDecoder decoder;
         auto container = decoder.container(path);
-        auto decodedPath = container.decode(vector<string>());
+        auto decodedPath = container.decode(std::vector<std::string>());
         auto field = client_instance->get_field(collectionName, documentName, decodedPath);
         return client_instance->set_field(collectionName, documentName, decodedPath, *Field_fromCField(value));
     }
@@ -152,14 +151,14 @@ extern "C" {
         if (client_instance == NULL) {
             exit(-1);
         }
-        string sBytes = bytes;
-        vector<char> vBytes(sBytes.length());
+        std::string sBytes = bytes;
+        std::vector<char> vBytes(sBytes.length());
         for(int i=0; i<sBytes.length();i++) {
             vBytes[i] = sBytes[i];
         }
         auto input = DataUnit(vBytes);
         auto unit = client_instance->call_function(name, input);
-        static string sUnit;
+        static std::string sUnit;
         for(int i=0;i<unit.bytes.size();i++) {
             sUnit += unit.bytes[i];
         }
