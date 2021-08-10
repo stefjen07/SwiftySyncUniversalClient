@@ -61,6 +61,7 @@ include_directories(/)
 include_directories(SwiftySyncAuthorization/cpp-httplib)
 include_directories(websocketpp)
 include_directories(SwiftySyncCommon/CodablePP)
+include_directories(asio/asio/include)
 
 if("${IOS}" EQUAL "1")
     set(LIB_DIR ios_libs)

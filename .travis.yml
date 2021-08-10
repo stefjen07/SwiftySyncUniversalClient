@@ -36,6 +36,6 @@ matrix:
 
 script:
   - mkdir -p build && pushd build
-  - cmake .. -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl/ -DASIO_INCLUDE_DIR=$TRAVIS_BUILD_DIR/asio/asio/include -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
+  - cmake .. -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl/ -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
   - cmake --build .
   - ctest --output-on-failure
