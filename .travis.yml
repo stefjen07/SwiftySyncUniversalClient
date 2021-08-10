@@ -1,0 +1,39 @@
+language: cpp
+
+os:
+#  - windows
+  - linux
+  - osx
+
+addons:
+  apt:
+    packages: openssl
+  homebrew:
+    packages: openssl
+
+compiler:
+  - gcc
+  - clang
+
+env:
+  - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+  - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+  - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+  - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+
+matrix:
+  exclude:
+      - os:       osx
+        compiler: gcc
+
+      - os:  osx
+        env: TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+
+      - os:  osx
+        env: TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+
+script:
+  - mkdir -p build && pushd build
+  - cmake .. -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl/ -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
+  - cmake --build .
+  - ctest --output-on-failure

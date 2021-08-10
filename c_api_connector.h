@@ -1,12 +1,12 @@
 #ifndef C_API_CONNECTOR_H
 #define C_API_CONNECTOR_H
 
-#include <stdbool.h>
 #include "c_api_storage.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+    #include <stdbool.h>
 
     struct CFieldArray {
         struct CField* ptr;

@@ -8,7 +8,6 @@
 #include "JSON.hpp"
 #include "Data.hpp"
 #include <iostream>
-#include <stdlib.h>
 
 class DebugProvider : public AuthorizationProvider {
 public:
@@ -22,6 +21,7 @@ public:
 #ifdef __cplusplus
 extern "C" {
 #endif
+    #include <stdlib.h>
 
     static SwiftyUniversalClient *client_instance = NULL;
     static FacebookProvider facebookProvider = FacebookProvider();

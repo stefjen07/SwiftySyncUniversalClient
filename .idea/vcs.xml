@@ -12,6 +12,7 @@
     <mapping directory="$PROJECT_DIR$/SwiftySyncStorage/CodablePP" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/SwiftySyncStorage/SwiftySyncCommon" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/SwiftySyncStorage/SwiftySyncCommon/CodablePP" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SwiftySyncUniversalClient" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/asio2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/vcpkg" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/websocketpp" vcs="Git" />

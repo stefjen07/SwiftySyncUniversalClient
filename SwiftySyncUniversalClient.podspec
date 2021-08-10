@@ -31,7 +31,7 @@ Pod::Spec.new do |spec|
   - Call function on the server.
                    DESC
 
-  spec.homepage     = "http://github.com/stefjen07/SwiftySyncUniversalClient"
+  spec.homepage     = "https://github.com/stefjen07/SwiftySyncUniversalClient"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -64,11 +64,11 @@ Pod::Spec.new do |spec|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  # spec.platform     = :ios
+  spec.platform     = :ios
   # spec.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  # spec.ios.deployment_target = "5.0"
+  spec.ios.deployment_target = "15.0"
   # spec.osx.deployment_target = "10.7"
   # spec.watchos.deployment_target = "2.0"
   # spec.tvos.deployment_target = "9.0"
@@ -80,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "http://github.com/stefjen07/SwiftySyncUniversalClient.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/stefjen07/SwiftySyncUniversalClient.git", :tag => "v0.9.1-alpha" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -91,10 +91,12 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "Classes", "Classes/**/*.{h,m}"
-  spec.exclude_files = "Classes/Exclude"
+  spec.source_files  = "*.{hpp,h,cpp}", "SwiftySyncAuthorization/*Authorization.{hpp,cpp}", "SwiftySyncAuthorization/cpp-httplib/httplib.h", "SwiftySyncCommon/*.{hpp,cpp}", "SwiftySyncCommon/CodablePP/*.{hpp,cpp}", "SwiftySyncStorage/*.{hpp,cpp,h}"
+  spec.exclude_files = "SwiftySyncCommon/test.cpp" , "SwiftySyncCommon/CodablePP/main.cpp", "SwiftySyncStorage/main.cpp"
 
-  # spec.public_header_files = "Classes/**/*.h"
+  spec.public_header_files = "*.{hpp,h}", "SwiftySyncAuthorization/*.hpp", "SwiftySyncAuthorization/cpp-httplib/httplib.h", "SwiftySyncCommon/*.hpp", "SwiftySyncCommon/CodablePP/*.hpp", "SwiftySyncStorage/*.{hpp,h}", "websocketpp/**/*.{hpp,h}"
+
+  spec.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => '"${SRCROOT}/websocketpp"/**' }
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -121,7 +123,7 @@ Pod::Spec.new do |spec|
   # spec.frameworks = "SomeFramework", "AnotherFramework"
 
   # spec.library   = "iconv"
-  # spec.libraries = "iconv", "xml2"
+  spec.vendored_libraries = "ios_libs/libcrypto.a", "ios_libs/libssl.a"
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
