@@ -7,9 +7,13 @@ os:
 
 addons:
   apt:
-    packages: openssl
+    packages:
+      - openssl
+      - libasio
   homebrew:
-    packages: openssl
+    packages:
+      - openssl
+      - asio
 
 compiler:
   - gcc
