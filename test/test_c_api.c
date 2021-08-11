@@ -1,3 +1,6 @@
+#define CLIENT
+#define SSL_CLIENT
+
 #include "c_api_connector.h"
 #include <stdio.h>
 #include <stdlib.h>

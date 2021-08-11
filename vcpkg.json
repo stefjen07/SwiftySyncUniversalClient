@@ -1,9 +1,0 @@
-{
-  "name": "swifty-sync-universal",
-  "version-string": "1.0.0",
-  "description": "",
-  "dependencies": [
-	"asio",
-	"openssl"
-  ]
-}

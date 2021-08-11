@@ -1,4 +1,7 @@
 #define CLIENT
+#define SSL_CLIENT
+
+#define CLIENT
 #include "GoogleAuthorization.hpp"
 #include "FacebookAuthorization.hpp"
 #include "SwiftySyncUniversalClient.hpp"

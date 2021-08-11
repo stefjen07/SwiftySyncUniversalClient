@@ -3,9 +3,6 @@
 
 #define _WEBSOCKETPP_CPP11_RANDOM_DEVICE_
 #define ASIO_STANDALONE
-#define CLIENT
-
-#include "Usage.h"
 
 #ifdef SSL_CLIENT
 #include <websocketpp/config/asio_client.hpp>

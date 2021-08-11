@@ -51,9 +51,10 @@ add_subdirectory(SwiftySyncAuthorization)
 add_subdirectory(SwiftySyncCommon)
 add_subdirectory(SwiftySyncStorage)
 
+include_directories(include)
 include_directories(SwiftySyncAuthorization/include)
-include_directories(SwiftySyncCommon)
-include_directories(SwiftySyncStorage)
+include_directories(SwiftySyncCommon/include)
+include_directories(SwiftySyncStorage/include)
 
 include_directories(/)
 include_directories(SwiftySyncAuthorization/cpp-httplib)
@@ -66,10 +67,10 @@ set(OPENSSL_LIBRARIES ssl crypto)
 
 include_directories(${OPENSSL_INCLUDE_DIR})
 
-add_library(SwiftySyncUniversalClient SwiftySyncUniversalClient.cpp SwiftySyncUniversalClient.hpp)
+add_library(SwiftySyncUniversalClient src/SwiftySyncUniversalClient.cpp include/SwiftySyncUniversalClient.hpp)
 target_link_libraries(SwiftySyncUniversalClient SwiftySyncAuthorization SwiftySyncCommon SwiftySyncStorage)
 
-add_library(c_api_connector c_api_connector.cpp c_api_connector.h)
+add_library(c_api_connector src/c_api_connector.cpp include/c_api_connector.h)
 target_link_libraries(c_api_connector SwiftySyncUniversalClient c_api_storage)
 
 if("${IOS}" EQUAL "1")
@@ -80,8 +81,8 @@ if("${IOS}" EQUAL "1")
     install (FILES c_api_connector.h SwiftySyncStorage/c_api_storage.h DESTINATION include)
 endif()
 
-add_executable(test_client main.cpp)
+add_executable(test_client test/test.cpp)
 target_link_libraries(test_client LINK_PUBLIC SwiftySyncUniversalClient)
 
-add_executable(test_c_api c_api_test.c)
+add_executable(test_c_api test/test_c_api.c)
 target_link_libraries(test_c_api LINK_PUBLIC c_api_connector)
