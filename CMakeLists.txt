@@ -38,14 +38,12 @@ if("${SYSTEM_NAME}" STREQUAL "iOS")
         message(STATUS "UIKit.framework found! ${UIKIT_LIBRARY}")
     endif()
 
-    find_package(XCTest)
-    #find_host_package(XCTest REQUIRED)
-
     include(CheckTypeSize)
     check_type_size(time_t SIZEOF_TIME_T)
 endif()
 
 add_compile_definitions(CLIENT)
+add_compile_definitions(_WEBSOCKETPP_CPP11_THREAD_)
 add_compile_definitions(_WEBSOCKETPP_CPP11_RANDOM_DEVICE_)
 add_compile_definitions(ASIO_STANDALONE)
 
@@ -53,45 +51,37 @@ add_subdirectory(SwiftySyncAuthorization)
 add_subdirectory(SwiftySyncCommon)
 add_subdirectory(SwiftySyncStorage)
 
-include_directories(SwiftySyncAuthorization)
+include_directories(SwiftySyncAuthorization/include)
 include_directories(SwiftySyncCommon)
 include_directories(SwiftySyncStorage)
 
 include_directories(/)
 include_directories(SwiftySyncAuthorization/cpp-httplib)
 include_directories(websocketpp)
-include_directories(SwiftySyncCommon/CodablePP)
+include_directories(SwiftySyncCommon/CodablePP/include)
 include_directories(asio/asio/include)
 
-if("${IOS}" EQUAL "1")
-    set(LIB_DIR ios_libs)
-    set(INCLUDE_DIR vcpkg_installed/arm64-ios/include)
-    set(LIBS crypto ssl)
-    link_directories(${LIB_DIR})
-    set(OPENSSL_INCLUDE_DIR ${INCLUDE_DIR})
-    set(OPENSSL_LIBRARIES ${LIBS})
-else()
-    find_package(OpenSSL)
-endif()
+set(OPENSSL_INCLUDE_DIR ${CMAKE_CURRENT_BINARY_DIR}/openssl-cmake/include)
+set(OPENSSL_LIBRARIES ssl crypto)
 
 include_directories(${OPENSSL_INCLUDE_DIR})
 
 add_library(SwiftySyncUniversalClient SwiftySyncUniversalClient.cpp SwiftySyncUniversalClient.hpp)
 target_link_libraries(SwiftySyncUniversalClient SwiftySyncAuthorization SwiftySyncCommon SwiftySyncStorage)
 
-#add_library(c_api_connector c_api_connector.cpp c_api_connector.h)
-#target_link_libraries(c_api_connector SwiftySyncUniversalClient c_api_storage)
+add_library(c_api_connector c_api_connector.cpp c_api_connector.h)
+target_link_libraries(c_api_connector SwiftySyncUniversalClient c_api_storage)
 
 if("${IOS}" EQUAL "1")
-    #install(TARGETS c_api_connector
-    #        LIBRARY DESTINATION lib
-    #        ARCHIVE DESTINATION lib/static)
+    install(TARGETS c_api_connector
+            LIBRARY DESTINATION lib
+            ARCHIVE DESTINATION lib/static)
 
-    #install (FILES c_api_connector.h SwiftySyncStorage/c_api_storage.h DESTINATION include)
+    install (FILES c_api_connector.h SwiftySyncStorage/c_api_storage.h DESTINATION include)
 endif()
 
-#add_executable(test_client main.cpp)
-#target_link_libraries(test_client LINK_PUBLIC SwiftySyncUniversalClient)
+add_executable(test_client main.cpp)
+target_link_libraries(test_client LINK_PUBLIC SwiftySyncUniversalClient)
 
-#add_executable(test_c_api c_api_test.c)
-#target_link_libraries(test_c_api LINK_PUBLIC c_api_connector)
+add_executable(test_c_api c_api_test.c)
+target_link_libraries(test_c_api LINK_PUBLIC c_api_connector)
