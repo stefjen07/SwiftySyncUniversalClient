@@ -15,6 +15,7 @@ ENDIF()
 add_compile_definitions(CLIENT)
 add_compile_definitions(_WEBSOCKETPP_CPP11_THREAD_)
 add_compile_definitions(_WEBSOCKETPP_CPP11_RANDOM_DEVICE_)
+add_compile_definitions(_WEBSOCKETPP_CPP11_TYPE_TRAITS_)
 add_compile_definitions(ASIO_STANDALONE)
 
 add_subdirectory(SwiftySyncAuthorization)

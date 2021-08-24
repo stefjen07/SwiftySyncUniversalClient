@@ -1,8 +1,11 @@
 #define CLIENT
 #include "SwiftySyncUniversalClient.hpp"
+#include <iostream>
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
 #include <Windows.h>
 #endif
+
+using namespace std;
 
 bool SwiftyUniversalClient::send(string content) {
     websocketpp::lib::error_code ec;
@@ -16,7 +19,9 @@ bool SwiftyUniversalClient::send(string content) {
 }
 
 string SwiftyUniversalClient::sendRequest(string id, string request) {
-    send(request);
+    if (request != "") {
+        send(request);
+    }
     cout << "Request with id " << id << " sent\n";
     while (responds.find(id) == responds.end()) {
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
@@ -138,6 +143,16 @@ void SwiftyUniversalClient::on_message(websocketpp::connection_hdl hdl, message_
             responds[id] = respond;
         }
     }
+
+    if (respond.find(MESSAGE_PREFIX) == 0) {
+        unsigned prefixSize = strlen(MESSAGE_PREFIX);
+        string message = respond.substr(prefixSize, respond.length() - prefixSize);
+        responds[MESSAGE_ID] = message;
+    }
+}
+
+string SwiftyUniversalClient::waitForMessage() {
+    return sendRequest(MESSAGE_ID, "");
 }
 
 void SwiftyUniversalClient::authorize(int providerIndex, string credentials) {

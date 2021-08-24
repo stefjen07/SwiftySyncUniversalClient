@@ -28,6 +28,7 @@ extern "C" {
     struct CFieldArray get_document(const char* collectionName, const char* documentName);
     bool set_document(const char* collectionName, const char* documentName, struct CFieldArray fields);
     const char* call_function(const char* name, const char* bytes);
+    const char* wait_for_message();
 
 #ifdef __cplusplus
 }

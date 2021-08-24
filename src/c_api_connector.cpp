@@ -165,6 +165,13 @@ extern "C" {
         return sUnit.c_str();
     }
 
+    const char* wait_for_message() {
+        if (client_instance == NULL) {
+            exit(-1);
+        }
+        return client_instance->waitForMessage().c_str();
+    }
+
 #ifdef __cplusplus
 }
 #endif

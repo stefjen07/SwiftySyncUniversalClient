@@ -34,7 +34,6 @@ typedef websocketpp::client<websocketpp::config::asio_client> client;
 using websocketpp::lib::placeholders::_1;
 using websocketpp::lib::placeholders::_2;
 using websocketpp::lib::bind;
-using namespace std;
 
 typedef websocketpp::config::asio_client::message_type::ptr message_ptr;
 
@@ -44,33 +43,34 @@ public:
 	client::connection_ptr con;
 	websocketpp::lib::shared_ptr<websocketpp::lib::thread> thread;
 
-	vector<AuthorizationProvider*> supportedProviders;
-	string uri;
-	function<void(AuthorizationStatus)> authHandler;
+	std::vector<AuthorizationProvider*> supportedProviders;
+	std::string uri;
+	std::function<void(AuthorizationStatus)> authHandler;
 
-	map<string, string> responds;
+	std::map<std::string, std::string> responds;
 
 	bool authorized = false;
 
-	bool send(string content);
-	string sendRequest(string id, string request);
+	bool send(std::string content);
+	std::string sendRequest(std::string id, std::string request);
+	std::string waitForMessage();
 
-	Field get_field(string collectionName, string documentName, vector<string> path);
-	bool set_field(string collectionName, string documentName, vector<string> path, Field value);
-	vector<Field> get_document(string collectionName, string documentName);
+	Field get_field(std::string collectionName, std::string documentName, std::vector<std::string> path);
+	bool set_field(std::string collectionName, std::string documentName, std::vector<std::string> path, Field value);
+	std::vector<Field> get_document(std::string collectionName, std::string documentName);
 	bool set_document(Document document);
 
-	DataUnit call_function(string name, DataUnit input);
+	DataUnit call_function(std::string name, DataUnit input);
 
 	void on_message(websocketpp::connection_hdl hdl, message_ptr msg);
 
-	void authorize(int providerIndex, string credentials);
+	void authorize(int providerIndex, std::string credentials);
 
-	void handleAuthRespond(string body);
+	void handleAuthRespond(std::string body);
 
 	void run();
 
-	SwiftyUniversalClient(string uri) {
+	SwiftyUniversalClient(std::string uri) {
 		this->uri = uri;
 	}
 
